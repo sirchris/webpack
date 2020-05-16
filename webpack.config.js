@@ -9,7 +9,6 @@ module.exports = {
     devtool: 'inline-source-map',
     entry: {
         app: './src/index.js',
-        print: './src/print.js',
     },
     mode: 'development',
     output: {
