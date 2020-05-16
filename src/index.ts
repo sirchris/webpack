@@ -1,6 +1,6 @@
-async function getComponent() {
-    const element = document.createElement('div');
-    const btn = document.createElement('button');
+async function getComponent(): Promise<HTMLDivElement> {
+    const element: HTMLDivElement = document.createElement('div');
+    const btn: HTMLButtonElement = document.createElement('button');
 
     const { default: _ } = await import(/* webpackChunkName: "lodash" */ 'lodash');
 
@@ -14,13 +14,13 @@ async function getComponent() {
     return element;
 }
 
-async function handleClick() {
+async function handleClick(): Promise<void> {
     const print = await import(/* webpackChunkName: "print" */ './print');
 
     print.default();
 }
 
-async function run() {
+async function run(): Promise<void> {
     const component = await getComponent();
 
     document.body.appendChild(component);

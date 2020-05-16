@@ -8,9 +8,18 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     entry: {
-        app: './src/index.js',
+        app: './src/index.ts',
     },
     mode: 'development',
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
+        ],
+    },
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
@@ -20,5 +29,8 @@ module.exports = {
             title: 'Output Management',
         }),
         new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
-    ]
+    ],
+    resolve: {
+        extensions: [ '.tsx', '.ts', '.js' ],
+    },
 };
